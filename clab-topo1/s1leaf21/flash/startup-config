@@ -1,0 +1,40 @@
+! Startup-config last modified at Tue Jan 23 05:53:16 2024 by root
+! device: s1leaf21 (cEOSLab, EOS-4.31.1F-34556000.4311F (engineering build))
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$8KwXiB7Df9zDX0vt$dG5o.17lokMqJ0OKTV217B/9MH8r5DvgnRv8T0WKKuXuo5NZO575IN0wIVay/Q6HP3noAcZGNq/WrJYA/1g.u/
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname s1leaf21
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+management api http-commands
+   no shutdown
+!
+management api gnmi
+   transport grpc default
+!
+management api netconf
+   transport ssh default
+!
+interface Ethernet1
+!
+interface Ethernet2
+!
+interface Management0
+   ip address 10.0.5.52/24
+!
+no ip routing
+!
+ip route 0.0.0.0/0 10.0.5.1
+!
+end

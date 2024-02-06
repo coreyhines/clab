@@ -1,0 +1,7 @@
+clab-topo1/*/flash/*
+*.gz
+*.log
+!clab-topo1/*/flash/startup-config
+!clab-topo1/*/flash/boot-config
+clab-topo1/.tls
+clab-topo1/authorized_keys

@@ -1,0 +1,58 @@
+name: topo1
+prefix: ""
+
+mgmt:
+  network: net-5
+
+topology:
+  kinds:
+    ceos:
+      image: chub.freeblizz.com/ceosimage:4.31.1F
+    linux:
+      image: ghcr.io/hellt/network-multitool
+  nodes:
+    s1spine1:
+      mgmt-ipv4: 10.0.5.48
+      kind: ceos
+    s1spine2:
+      mgmt-ipv4: 10.0.5.49
+      kind: ceos
+    s1leaf11:
+      mgmt-ipv4: 10.0.5.50
+      kind: ceos
+    s1leaf12:
+      mgmt-ipv4: 10.0.5.51
+      kind: ceos
+    s1leaf21:
+      mgmt-ipv4: 10.0.5.52
+      kind: ceos
+    s1leaf22:
+      mgmt-ipv4: 10.0.5.53
+      kind: ceos
+    s1leaf31:
+      mgmt-ipv4: 10.0.5.54
+      kind: ceos
+    s1leaf32:
+      mgmt-ipv4: 10.0.5.55
+      kind: ceos
+    host1:
+      mgmt-ipv4: 10.0.5.56
+      kind: linux
+    host2:
+      mgmt-ipv4: 10.0.5.57
+      kind: linux
+    host3:
+      mgmt-ipv4: 10.0.5.58
+      kind: linux
+
+  links:
+    - endpoints: ["s1spine1:eth1", "s1leaf11:eth1"]
+    - endpoints: ["s1spine1:eth2", "s1leaf12:eth1"]
+    - endpoints: ["s1spine1:eth3", "s1leaf21:eth1"]
+    - endpoints: ["s1spine1:eth4", "s1leaf22:eth1"]
+    - endpoints: ["s1spine1:eth5", "s1leaf31:eth1"]
+    - endpoints: ["s1spine2:eth1", "s1leaf11:eth2"]
+    - endpoints: ["s1spine2:eth2", "s1leaf12:eth2"]
+    - endpoints: ["s1spine2:eth3", "s1leaf21:eth2"]
+    - endpoints: ["s1spine2:eth4", "s1leaf31:eth2"]
+    - endpoints: ["s1spine2:eth5", "s1leaf32:eth2"]
